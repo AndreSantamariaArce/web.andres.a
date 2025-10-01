@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejemplo con navegación interna</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+  <!-- Menú superior fijo -->
+<nav class="menu-arriba">
+  <div class="menu-contenido">
+    <div class="menu-izquierda">
+      <h2>omponentes de una computadora</h2>
+      <p>
+        <a href="#hilos">Hilos</a> | 
+        <a href="#cpu">CPU</a> | 
+        <a href="#gpu">GPU</a>
+      </p>
+    </div>
+
+    <div class="menu-derecha">
+      <!-- Buscador -->
+      <input type="text" id="buscador" placeholder="Buscar título..." onkeyup="buscarTitulo()">
+    </div>
+  </div>
+</nav>
+
+  <!-- Contenido -->
+  <div class="contenido">
+
+    <h1 id="hilos">¿Qué son los hilos dentro de una computadora?</h1>
+    <p>
+Un hilo (en inglés thread) dentro de una computadora es la unidad más pequeña de ejecución que un sistema operativo puede programar para que el procesador la ejecute.<br>
+En otras palabras, un hilo es como una "tarea ligera" dentro de un proceso.<br>
+🔹 Diferencia entre proceso e hilo:<br>
+•	Un proceso es un programa en ejecución (por ejemplo, abrir Word o Chrome). Cada proceso tiene su propia memoria y recursos.<br>
+•	Un hilo es una subdivisión de ese proceso. Varios hilos pueden existir dentro de un mismo proceso y comparten la misma memoria y recursos del proceso.<br>
+🔹 Características principales de un hilo:<br>
+1.	Ligero: requiere menos recursos que un proceso completo.<br>
+2.	Compartición: varios hilos de un proceso comparten memoria, archivos y variables globales.<br>
+3.	Independencia relativa: si un hilo falla, puede afectar al proceso completo, pero los otros hilos pueden seguir funcionando mientras tanto.<br>
+4.	Paralelismo: permiten que una aplicación realice varias tareas al mismo tiempo (ejemplo: en un navegador, un hilo puede cargar la página, otro mostrar el video y otro gestionar la interfaz).<br>
+🔹 Ejemplo sencillo:<br>
+Imagina que abres un navegador web (proceso):<br>
+•	Un hilo se encarga de descargar datos de Internet.<br>
+•	Otro hilo renderiza la página.<br>
+•	Otro hilo gestiona la interacción del teclado y mouse.<br>
+
+    </p>
+
+    <h1 id="cpu">¿Qué es un CPU?</h1>
+    <p>
+Un CPU (siglas de Central Processing Unit o Unidad Central de Procesamiento) es básicamente el cerebro de la computadora.<br>
+Es el componente encargado de interpretar y ejecutar las instrucciones de los programas y del sistema operativo.<br>
+Funciones principales del CPU<br>
+1.	Controlar: coordina y dirige lo que hacen los demás componentes (memoria, disco, tarjeta gráfica, etc.).<br>
+2.	Calcular: realiza operaciones matemáticas y lógicas necesarias para que los programas funcionen.<br>
+3.	Procesar instrucciones: sigue el ciclo clásico:<br>
+o	Fetch: busca la instrucción en la memoria.<br>
+o	Decode: la interpreta (qué operación debe hacer).<br>
+o	Execute: la ejecuta.<br>
+o	Store: guarda el resultado.<br>
+Partes principales de un CPU<br>
+•	ALU (Unidad Aritmética Lógica): hace cálculos matemáticos y comparaciones lógicas.<br>
+•	CU (Unidad de Control): dirige el flujo de datos e instrucciones.<br>
+•	Registros: memoria ultrarrápida dentro del CPU para guardar datos temporales.<br>
+•	Caché: memoria muy rápida integrada, para acelerar el acceso a información usada frecuentemente.<br>
+🔹 Características que definen a un CPU<br>
+•	Frecuencia (GHz): qué tan rápido puede ejecutar instrucciones.<br>
+•	Núcleos: cuántas “unidades de trabajo” independientes tiene.<br>
+•	Hilos: caminos de ejecución lógica que permiten manejar varias tareas al mismo tiempo.<br>
+•	Arquitectura: el diseño interno (ej. Intel Alder Lake, AMD Zen 4).<br>
+•	Consumo y eficiencia energética.<br>
+Ejemplo sencillo<br>
+•	Si la computadora fuera una fábrica, el CPU sería el jefe de producción:<br>
+o	Recibe las órdenes (instrucciones).<br>
+o	Decide qué hacer y cómo organizarlo.<br>
+o	Da órdenes a los trabajadores (otros componentes) para que el trabajo se realice.<br>
+
+    </p>
+
+    <h1 id="gpu">¿Qué es un GPU?</h1>
+    <p>
+Un GPU (siglas de Graphics Processing Unit o Unidad de Procesamiento Gráfico) es un procesador especializado diseñado principalmente para acelerar los cálculos relacionados con gráficos e imágenes.<br>
+Aunque nació para renderizar gráficos en videojuegos, hoy en día también se usa en muchas tareas de cómputo intensivo (IA, aprendizaje automático, minería de criptomonedas, simulaciones científicas, etc.).<br>
+Funciones principales del GPU<br>
+1.	Renderizar gráficos: dibuja y procesa las imágenes, animaciones y videos que ves en la pantalla.<br>
+2.	Procesamiento paralelo: está diseñado para ejecutar miles de operaciones pequeñas de manera simultánea, ideal para gráficos y algoritmos masivos.<br>
+3.	Aceleración de IA y cálculos científicos: gracias a su arquitectura paralela, puede entrenar redes neuronales, procesar grandes volúmenes de datos y hacer simulaciones físicas.<br>
+🔹 Tipos de GPU<br>
+1.	Integrada: viene dentro del procesador (ej. Intel UHD, AMD Radeon integradas). Menos potente, pero eficiente y barata.<br>
+2.	Dedicada: tarjeta gráfica independiente (ej. NVIDIA GeForce, AMD Radeon). Mucho más potente, con memoria propia (VRAM).<br>
+3.	Profesional / de cómputo: usadas en servidores y estaciones de trabajo (ej. NVIDIA Quadro, Tesla, RTX A6000).<br>
+Ejemplo sencillo<br>
+•	Si la computadora fuera una fábrica:<br>
+o	El CPU es el jefe que organiza y decide.<br>
+o	El GPU es un ejército de trabajadores que hacen miles de tareas simples en paralelo (por ejemplo, pintar todos los píxeles de una imagen).<br>
+
+    </p>
+
+    <div class="tarjetas">
+  <div class="card">
+    <a href="https://es.wikipedia.org/wiki/Hilo_(informática)" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Threads.png/320px-Threads.png" alt="Hilos">
+    </a>
+    <p>Más información sobre <strong>Hilos en computadoras</strong>.</p>
+  </div>
+
+  <div class="card">
+    <a href="https://es.wikipedia.org/wiki/Unidad_central_de_procesamiento" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/CPU-Intel_Core_i7.jpg/320px-CPU-Intel_Core_i7.jpg" alt="CPU">
+    </a>
+    <p>Aprende más sobre <strong>CPU</strong>.</p>
+  </div>
+
+  <div class="card">
+    <a href="https://es.wikipedia.org/wiki/Unidad_de_procesamiento_gráfico" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/NVIDIA_GeForce_GTX_1080.jpg/320px-NVIDIA_GeForce_GTX_1080.jpg" alt="GPU">
+    </a>
+    <p>Descubre todo sobre <strong>GPU</strong>.</p>
+  </div>
+</div>
+
+  </div>
+
+  <!-- Barra inferior -->
+  <footer class="barra-abajo">
+    <p>© 2025 Mi Sitio Web | André Santamaria Arce</p>
+  </footer>
+
+</body>
+</html>

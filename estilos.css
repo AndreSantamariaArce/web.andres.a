@@ -1,0 +1,119 @@
+/* Reset básico */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f3f3f3;
+  scroll-behavior: smooth; /* 🔥 desplazamiento suave */
+}
+
+/* Menú fijo arriba */
+.menu-arriba {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #0078d7;
+  color: white;
+  padding: 15px 20px;
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
+  z-index: 1000;
+}
+
+.menu-arriba a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+  font-weight: bold;
+}
+
+.menu-arriba a:hover {
+  text-decoration: underline;
+}
+
+/* Contenido principal */
+.contenido {
+  margin-top: 140px; /* espacio para menú fijo */
+  padding: 20px;
+}
+
+h1 {
+  color: #0078d7;
+  margin-top: 60px;
+}
+
+/* Footer */
+.barra-abajo {
+  background-color: #0078d7;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: 50px;
+}
+.menu-contenido {
+  display: flex;
+  justify-content: space-between; /* separa izquierda y derecha */
+  align-items: center;
+}
+.menu-izquierda h2 {
+  margin: 0;
+}
+
+.menu-izquierda a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+  font-weight: bold;
+}
+
+.menu-izquierda a:hover {
+  text-decoration: underline;
+}
+.menu-derecha input {
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
+  width: 200px;
+}
+#buscador {
+  margin-top: 10px;
+  padding: 5px;
+  width: 200px;
+  border-radius: 5px;
+  border: none;
+}
+
+/* Contenedor de tarjetas */
+.tarjetas {
+  display: flex;
+  justify-content: space-around; /* espacio entre tarjetas */
+  flex-wrap: wrap; /* se acomoda en varias filas si es necesario */
+  margin-top: 50px;
+  padding: 20px 0;
+}
+
+/* Tarjeta individual */
+.card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0px 2px 8px rgba(0,0,0,0.2);
+  text-align: center;
+  width: 250px;
+  margin: 10px;
+  padding: 10px;
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-5px); /* efecto al pasar el mouse */
+}
+
+.card img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.card p {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #333;
+}
