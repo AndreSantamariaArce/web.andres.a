@@ -11,7 +11,7 @@
 <nav class="menu-arriba">
   <div class="menu-contenido">
     <div class="menu-izquierda">
-      <h2>omponentes de una computadora</h2>
+      <h2>componentes de una computadora</h2>
       <p>
         <a href="#hilos">Hilos</a> | 
         <a href="#cpu">CPU</a> | 
@@ -23,6 +23,26 @@
       <!-- Buscador -->
       <input type="text" id="buscador" placeholder="Buscar título..." onkeyup="buscarTitulo()">
     </div>
+    <script>
+function buscarTitulo() {
+  // Obtener texto escrito en el buscador
+  let input = document.getElementById("buscador").value.toLowerCase();
+
+  // Buscar todos los títulos h1 y h2 de la página
+  let titulos = document.querySelectorAll("h1, h2");
+
+  for (let titulo of titulos) {
+    let texto = titulo.textContent.toLowerCase();
+
+    // Si el texto del título incluye lo que escribió el usuario
+    if (texto.includes(input) && input !== "") {
+      // Ir directamente a ese título
+      titulo.scrollIntoView({ behavior: "smooth", block: "start" });
+      break; // detener después del primer match
+    }
+  }
+}
+</script>
   </div>
 </nav>
 
