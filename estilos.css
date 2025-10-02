@@ -149,4 +149,9 @@ h1 {
   color: #333;
 }
 
-
+h1, h2 {
+  background-color: rgba(255, 255, 255, 0.8); /* blanco semi-transparente */
+  padding: 5px 10px;  /* espacio entre el texto y el borde */
+  border-radius: 5px; /* opcional: bordes redondeados */
+  display: inline-block; /* importante para que el fondo se ajuste al texto */
+}
