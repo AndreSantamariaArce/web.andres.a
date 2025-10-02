@@ -2,8 +2,15 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background-color: #f3f3f3;
+  background: linear-gradient(-45deg, #ff7f50, #1e90ff, #32cd32, #ff69b4);
+  background-size: 400% 400%; /* hace que el gradiente sea más grande que la pantalla para animar */
+  animation: gradientAnim 15s ease infinite; /* animación de 15 segundos, infinita */
   scroll-behavior: smooth; /* 🔥 desplazamiento suave */
+}
+@keyframes gradientAnim {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 h1, h2 {
