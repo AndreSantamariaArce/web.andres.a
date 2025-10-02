@@ -149,9 +149,20 @@ h1 {
   color: #333;
 }
 
-h1, h2 {
-  background-color: rgba(255, 255, 255, 0.8); /* blanco semi-transparente */
-  padding: 5px 10px;  /* espacio entre el texto y el borde */
-  border-radius: 5px; /* opcional: bordes redondeados */
-  display: inline-block; /* importante para que el fondo se ajuste al texto */
+/* Solo los títulos dentro de la sección contenido */
+.contenido h1,
+.contenido h2 {
+  background-color: rgba(255, 255, 255, 0.8); /* fondo semi-transparente */
+  padding: 5px 10px;
+  border-radius: 5px;
+  display: inline-block;
+  color: #0078d7; /* azul solo para títulos del contenido */
+}
+
+/* Solo los párrafos dentro de la sección contenido */
+.contenido p {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 10px;
+  border-radius: 5px;
+  color: #333; /* gris oscuro para párrafos del contenido */
 }
