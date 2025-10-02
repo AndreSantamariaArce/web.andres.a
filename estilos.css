@@ -161,8 +161,28 @@ h1 {
 
 /* Solo los párrafos dentro de la sección contenido */
 .contenido p {
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0.4);
   padding: 10px;
   border-radius: 5px;
   color: #333; /* gris oscuro para párrafos del contenido */
+}
+
+.boton-refrescar {
+  text-align: center; /* centra el botón */
+  margin: 30px 0;    /* espacio arriba y abajo */
+}
+
+.boton-refrescar button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.boton-refrescar button:hover {
+  background-color: #929292;
 }
