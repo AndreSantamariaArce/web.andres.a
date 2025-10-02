@@ -54,6 +54,23 @@ h1 {
   padding: 20px;
   margin-top: 50px;
 }
+
+.barra-abajo .redes {
+  margin-top: 10px;
+}
+
+.barra-abajo .redes a {
+  color: white;
+  margin: 0 10px;
+  font-size: 20px;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.barra-abajo .redes a:hover {
+  color: #ffcc00; /* color al pasar el mouse */
+}
+
 .menu-contenido {
   display: flex;
   justify-content: space-between; /* separa izquierda y derecha */
@@ -124,4 +141,5 @@ h1 {
   font-size: 14px;
   color: #333;
 }
+
 
