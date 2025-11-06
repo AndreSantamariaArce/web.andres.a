@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejemplo con navegación interna</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <!-- Menú superior fijo -->
+<nav class="menu-arriba">
+  <div class="menu-contenido">
+    <div class="menu-izquierda">
+      <h2>componentes de una computadora</h2>
+      <p>
+        <a href="#hilos">Hilos</a> | 
+        <a href="#cpu">CPU</a> | 
+        <a href="#gpu">GPU</a> |
+        <a href="#memorias">Memorias</a> |
+        <a href="#ram">RAM</a> |
+        <a href="#hdd">HDD</a> |
+        <a href="#sdd">SDD</a> |
+        <a href="#sshd">SSHD</a> |
+        <a href="#nvme">MVMe</a> |
+        <a href="#informacion">Más información</a>
+      </p>
+    </div>
+    <div class="menu-derecha">
+      <!-- Buscador -->
+      <input type="text" id="buscador" placeholder="Buscar título..." onkeyup="buscarTitulo()">
+    </div>
+    <script>
+function buscarTitulo() {
+  // Obtener texto escrito en el buscador
+  let input = document.getElementById("buscador").value.toLowerCase();
+
+  // Buscar todos los títulos h1 y h2 de la página
+  let titulos = document.querySelectorAll("h1, h2");
+
+  for (let titulo of titulos) {
+    let texto = titulo.textContent.toLowerCase();
+
+    // Si el texto del título incluye lo que escribió el usuario
+    if (texto.includes(input) && input !== "") {
+      // Ir directamente a ese título
+      titulo.scrollIntoView({ behavior: "smooth", block: "start" });
+      break; // detener después del primer match
+    }
+  }
+}
+</script>
+  </div>
+</nav>
+  <!-- Contenido -->
+  <div class="contenido">
+
+    <h1 id="hilos">¿Qué son los hilos dentro de una computadora?</h1>
+    <h1
+Un hilo (en inglés thread) dentro de una computadora es la unidad más pequeña de ejecución que un sistema operativo puede programar para que el procesador la ejecute.</h1>
+En otras palabras, un hilo es como una "tarea ligera" dentro de un proceso.<br>
+🔹 Diferencia entre proceso e hilo:<br>
+•	Un proceso es un programa en ejecución (por ejemplo, abrir Word o Chrome). Cada proceso tiene su propia memoria y recursos.<br>
+•	Un hilo es una subdivisión de ese proceso. Varios hilos pueden existir dentro de un mismo proceso y comparten la misma memoria y recursos del proceso.<br>
+🔹 Características principales de un hilo:<br>
+1.	Ligero: requiere menos recursos que un proceso completo.<br>
+2.	Compartición: varios hilos de un proceso comparten memoria, archivos y variables globales.<br>
+3.	Independencia relativa: si un hilo falla, puede afectar al proceso completo, pero los otros hilos pueden seguir funcionando mientras tanto.<br>
+4.	Paralelismo: permiten que una aplicación realice varias tareas al mismo tiempo (ejemplo: en un navegador, un hilo puede cargar la página, otro mostrar el video y otro gestionar la interfaz).<br>
+🔹 Ejemplo sencillo:<br>
+Imagina que abres un navegador web (proceso):<br>
+•	Un hilo se encarga de descargar datos de Internet.<br>
+•	Otro hilo renderiza la página.<br>
+•	Otro hilo gestiona la interacción del teclado y mouse.<br>
+    </p>
+    <h1 id="cpu">¿Qué es un CPU?</h1>
+    <p>
+Un CPU (siglas de Central Processing Unit o Unidad Central de Procesamiento) es básicamente el cerebro de la computadora.<br>
+Es el componente encargado de interpretar y ejecutar las instrucciones de los programas y del sistema operativo.<br>
+Funciones principales del CPU<br>
+1.	Controlar: coordina y dirige lo que hacen los demás componentes (memoria, disco, tarjeta gráfica, etc.).<br>
+2.	Calcular: realiza operaciones matemáticas y lógicas necesarias para que los programas funcionen.<br>
+3.	Procesar instrucciones: sigue el ciclo clásico:<br>
+o	Fetch: busca la instrucción en la memoria.<br>
+o	Decode: la interpreta (qué operación debe hacer).<br>
+o	Execute: la ejecuta.<br>
+o	Store: guarda el resultado.<br>
+Partes principales de un CPU<br>
+•	ALU (Unidad Aritmética Lógica): hace cálculos matemáticos y comparaciones lógicas.<br>
+•	CU (Unidad de Control): dirige el flujo de datos e instrucciones.<br>
+•	Registros: memoria ultrarrápida dentro del CPU para guardar datos temporales.<br>
+•	Caché: memoria muy rápida integrada, para acelerar el acceso a información usada frecuentemente.<br>
+🔹 Características que definen a un CPU<br>
+•	Frecuencia (GHz): qué tan rápido puede ejecutar instrucciones.<br>
+•	Núcleos: cuántas “unidades de trabajo” independientes tiene.<br>
+•	Hilos: caminos de ejecución lógica que permiten manejar varias tareas al mismo tiempo.<br>
+•	Arquitectura: el diseño interno (ej. Intel Alder Lake, AMD Zen 4).<br>
+•	Consumo y eficiencia energética.<br>
+Ejemplo sencillo<br>
+•	Si la computadora fuera una fábrica, el CPU sería el jefe de producción:<br>
+o	Recibe las órdenes (instrucciones).<br>
+o	Decide qué hacer y cómo organizarlo.<br>
+o	Da órdenes a los trabajadores (otros componentes) para que el trabajo se realice.<br>
+    </p>
+    <h1 id="gpu">¿Qué es un GPU?</h1>
+    <p>
+Un GPU (siglas de Graphics Processing Unit o Unidad de Procesamiento Gráfico) es un procesador especializado diseñado principalmente para acelerar los cálculos relacionados con gráficos e imágenes.<br>
+Aunque nació para renderizar gráficos en videojuegos, hoy en día también se usa en muchas tareas de cómputo intensivo (IA, aprendizaje automático, minería de criptomonedas, simulaciones científicas, etc.).<br>
+Funciones principales del GPU<br>
+1.	Renderizar gráficos: dibuja y procesa las imágenes, animaciones y videos que ves en la pantalla.<br>
+2.	Procesamiento paralelo: está diseñado para ejecutar miles de operaciones pequeñas de manera simultánea, ideal para gráficos y algoritmos masivos.<br>
+3.	Aceleración de IA y cálculos científicos: gracias a su arquitectura paralela, puede entrenar redes neuronales, procesar grandes volúmenes de datos y hacer simulaciones físicas.<br>
+🔹 Tipos de GPU<br>
+1.	Integrada: viene dentro del procesador (ej. Intel UHD, AMD Radeon integradas). Menos potente, pero eficiente y barata.<br>
+2.	Dedicada: tarjeta gráfica independiente (ej. NVIDIA GeForce, AMD Radeon). Mucho más potente, con memoria propia (VRAM).<br>
+3.	Profesional / de cómputo: usadas en servidores y estaciones de trabajo (ej. NVIDIA Quadro, Tesla, RTX A6000).<br>
+Ejemplo sencillo<br>
+•	Si la computadora fuera una fábrica:<br>
+o	El CPU es el jefe que organiza y decide.<br>
+o	El GPU es un ejército de trabajadores que hacen miles de tareas simples en paralelo (por ejemplo, pintar todos los píxeles de una imagen).<br>
+        </p>
+<h1 id="memorias">¿Cuáles son los tipos de memorias disco duro?</h1>
+    <p>
+Cuando hablamos de “memorias de disco duro” realmente nos referimos a los tipos de almacenamiento que puede tener una computadora (donde se guardan los datos de forma permanente, a diferencia de la RAM que es temporal).
+    </p>
+<h1 id="ram">¿Qué es la memoria RAM?</h1>
+    <p>
+Características principales de la RAM<br>
+1.	Acceso aleatorio: el CPU puede leer o escribir en cualquier posición de la RAM con la misma velocidad (no tiene que ir en orden).<br>
+2.	Volátil: su contenido desaparece al apagar o reiniciar la computadora.<br>
+3.	Muy rápida: mucho más veloz que un disco duro o SSD, aunque más lenta que la caché del CPU.<br>
+4.	Capacidad limitada: mientras más RAM tenga una PC, más programas y procesos puede manejar al mismo tiempo sin volverse lenta.<br>
+🔹 Función en el sistema<br>
+•	Cuando abres un programa (ej. Word o un videojuego), el sistema lo carga del disco a la RAM, porque ahí puede ejecutarse mucho más rápido.<br>
+•	Si la RAM se llena, la computadora usa el archivo de paginación en el disco, que es más lento → esto causa lentitud.<br>
+Tipos comunes de RAM<br>
+•	DDR (Double Data Rate): estándar actual en PCs. Ejemplos: DDR3, DDR4, DDR5.<br>
+•	SRAM (Static RAM): más rápida y cara, usada en cachés de CPU.<br>
+•	DRAM (Dynamic RAM): más común en RAM de PC, necesita refrescarse constantemente.<br>
+Analogía sencilla<br>
+Imagina que tu CPU es un estudiante resolviendo problemas:<br>
+•	La RAM es como la mesa de trabajo: allí coloca los libros, hojas y herramientas que necesita ahora.<br>
+•	El disco duro/SSD es la mochila: tiene mucha más capacidad, pero es más lento sacar y guardar cosas de allí.<br>
+•	La caché del CPU sería como tener notas rápidas justo en la mano: poquita información, pero acceso ultrarrápido.<br>
+    </p>
+<h1 id="hdd">HDD (Hard Disk Drive – Disco Duro Mecánico)</h1>
+    <p>
+•	Es el disco duro “clásico”.<br>
+•	Usa platos magnéticos que giran y un brazo lector que escribe/lee datos.<br>
+•	Ventajas:<br>
+o	Gran capacidad (1 TB, 2 TB, 4 TB o más) a bajo costo.<br>
+o	Ideal para almacenar muchos archivos (videos, fotos, música).<br>
+•	Desventajas:<br>
+o	Más lento que los SSD.<br>
+o	Son frágiles porque tienen partes mecánicas.<br>
+o	Consumen más energía y hacen ruido.<br>
+    </p>
+<h1 id="sdd">SSD (Solid State Drive – Unidad de Estado Sólido)</h1>
+    <p>
+•	No tiene partes mecánicas, usa chips de memoria flash (similares a los de una memoria USB).<br>
+•	Ventajas:<br>
+o	Mucho más rápido que un HDD (arranque del sistema y carga de programas en segundos).<br>
+o	Resistente a golpes.<br>
+o	Menor consumo de energía y sin ruido.<br>
+•	Desventajas:<br>
+o	Más caro por cada GB en comparación con un HDD.<br>
+o	Su vida útil depende del número de escrituras, aunque hoy en día duran bastante.<br>
+    </p>
+<h1 id="sshd">SSHD (Solid State Hybrid Drive – Disco Híbrido)</h1>
+    <p>
+•	Combina HDD + una pequeña memoria SSD en un mismo dispositivo.<br>
+•	Los datos más usados se guardan en la parte SSD para mayor velocidad.<br>
+•	Ventajas:<br>
+o	Más rápido que un HDD normal.<br>
+o	Más barato que un SSD de gran capacidad.<br>
+•	Desventajas:<br>
+o	No alcanza la velocidad de un SSD puro.<br>
+    </p>
+<h1 id="nvme">NVMe (Non-Volatile Memory Express – SSD de nueva generación)</h1>
+    <p>
+•	Es un tipo de SSD que usa el bus PCIe en lugar de SATA.<br>
+•	Mucho más rápido que los SSD SATA.<br>
+•	Se presentan en formato M.2 o PCIe.<br>
+•	Ventajas:<br>
+o	Velocidades altísimas (hasta 10 veces más rápido que un HDD).<br>
+o	Ideal para gamers, creadores de contenido, IA y edición de video.<br>
+•	Desventajas:<br>
+o	Más costosos.<br>
+o	Requieren compatibilidad con la tarjeta madre.<br>
+    </p>
+
+<h1 id="informacion">Más información</h1>
+
+    <div class="tarjetas">
+  <div class="card">
+    <a href="https://es.wikipedia.org/wiki/Hilo_(informática)" target="_blank">
+      <img src="C:\Users\andre\OneDrive\Desktop\gitweb\hilos.WEBP" alt="Hilos">
+    </a>
+    <p>Más información sobre <strong>Hilos en computadoras</strong>.</p>
+  </div>
+
+  <div class="card">
+    <a href="https://es.wikipedia.org/wiki/Unidad_central_de_procesamiento" target="_blank">
+      <img src="C:\Users\andre\OneDrive\Desktop\gitweb\CPU.jpg" alt="CPU">
+    </a>
+    <p>Aprende más sobre <strong>CPU</strong>.</p>
+  </div>
+
+  <div class="card">
+    <a href="https://es.wikipedia.org/wiki/Unidad_de_procesamiento_gráfico" target="_blank">
+      <img src="C:\Users\andre\OneDrive\Desktop\gitweb\GPU.jpg" alt="GPU">
+    </a>
+    <p>Descubre todo sobre <strong>GPU</strong>.</p>
+  </div>
+  <div class="card">
+    <a href="https://concepto.de/memoria-ram/" target="_blank">
+      <img src="C:\Users\andre\OneDrive\Desktop\gitweb\ram.WEBP" alt="RAM">
+    </a>
+    <p>Más información sobre <strong>Memorias RAM</strong>.</p>
+  </div>
+
+  <div class="card">
+    <a href="https://es.wikipedia.org/wiki/Unidad_de_disco_duro" target="_blank">
+      <img src="C:\Users\andre\OneDrive\Desktop\gitweb\hdd.WEBP" alt="HDD">
+    </a>
+    <p>Aprende más sobre <strong>HDD</strong>.</p>
+  </div>
+
+  <div class="card">
+    <a href="https://es.wikipedia.org/wiki/Unidad_de_estado_s%C3%B3lido" target="_blank">
+      <img src="C:\Users\andre\OneDrive\Desktop\gitweb\sdd.jpg" alt="SDD">
+    </a>
+    <p>Descubre todo sobre <strong>SDD</strong>.</p>
+  </div>
+
+  <div class="card">
+    <a href="https://www.xataka.com/basics/discos-duros-hibridos-sshd-que-que-ventajas-e-inconvenientes-tienen" target="_blank">
+      <img src="C:\Users\andre\OneDrive\Desktop\gitweb\sshd.WEBP" alt="SSHD">
+    </a>
+    <p>Descubre todo sobre <strong>SSHD</strong>.</p>
+  </div>
+
+    <div class="card">
+    <a href="https://www.ibm.com/mx-es/think/topics/nvme" target="_blank">
+      <img src="C:\Users\andre\OneDrive\Desktop\gitweb\nvme.jpg" alt="NVMe">
+    </a>
+    <p>Descubre todo sobre <strong>NVMe</strong>.</p>
+  </div>
+</div>
+  </div>
+  <!-- Barra inferior -->
+  <footer class="barra-abajo">
+    <p>© 2025 Mi Sitio Web | André Santamaria Arce</p>
+    <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+    <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+      <div class="boton-refrescar">
+<div class="boton-refrescar">
+  <button onclick="refrescarPagina()"> Refrescar página</button>
+</div>
+  </footer>
+
+<script>
+function refrescarPagina() {
+  location.reload(); // recarga la página
+}
+</script>
+</div>
+</body>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</html>
