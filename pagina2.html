@@ -5,8 +5,92 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contador de Clics</title>
   <link rel="stylesheet" href="estilos.css">
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: white;
+    }
+
+    h1 {
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+
+    /*Botón circular grande */
+    #botonContar {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background-color: #ffffff;
+      color: #0078d7;
+      border: none;
+      font-size: 24px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      transition: all 0.2s ease;
+    }
+
+    #botonContar:hover {
+      background-color: #0078d7;
+      color: #fff;
+      transform: scale(1.05);
+    }
+
+    #resetear {
+      margin-top: 25px;
+      padding: 10px 20px;
+      background: #fff;
+      border: none;
+      border-radius: 8px;
+      color: #0078d7;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    #resetear:hover {
+      background: #0078d7;
+      color: #fff;
+    }
+
+    #btnSubir {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #0078d7;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      font-size: 20px;
+      cursor: pointer;
+      display: none;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+      transition: 0.3s;
+    }
+
+    #btnSubir:hover {
+      background: #005fa3;
+    }
+  </style>
 </head>
 <body>
+    <!-- Loader -->
+<div id="loader">
+  <div class="spinner"></div>
+</div>
   <h1>Contador de clics</h1>
   <p>Has hecho clic <span id="contador">0</span> veces.</p>
 
@@ -47,5 +131,14 @@
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
   </script>
+  <div class="boton-navegar">
+  <a href="portada.html">Inicio</a>
+</div>
+<script>
+  window.addEventListener("load", function() {
+    const loader = document.getElementById("loader");
+    loader.classList.add("oculto");
+  });
+</script>
 </body>
 </html>
