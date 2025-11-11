@@ -125,7 +125,7 @@ Común en centros de datos y redes empresariales.<br>
   <a href="index.html">Ir a Pagina 1</a>
 </div>
 
-<h1 id="informacion">Más información</h1>
+<h1 id="informacion">Imagenes de referencia</h1>
 
     <div class="carrusel">
   <div class="slides">
@@ -209,6 +209,28 @@ function refrescarPagina() {
   window.addEventListener("load", function() {
     const loader = document.getElementById("loader");
     loader.classList.add("oculto");
+  });
+</script>
+
+<!-- Botón "Volver arriba" -->
+<button id="btnSubir" title="Volver arriba">⬆</button>
+
+<script>
+  // Mostrar/ocultar el botón según el desplazamiento
+  window.onscroll = function() { mostrarBoton() };
+
+  function mostrarBoton() {
+    const boton = document.getElementById("btnSubir");
+    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+      boton.style.display = "block";
+    } else {
+      boton.style.display = "none";
+    }
+  }
+
+  // Al hacer clic, vuelve suavemente al inicio
+  document.getElementById("btnSubir").addEventListener("click", function() {
+    window.scrollTo({ top: 0, behavior: "smooth" });
   });
 </script>
 

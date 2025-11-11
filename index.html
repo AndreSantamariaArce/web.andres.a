@@ -281,6 +281,27 @@ function refrescarPagina() {
   });
 </script>
 
+<!-- Botón "Volver arriba" -->
+<button id="btnSubir" title="Volver arriba">⬆</button>
+
+<script>
+  // Mostrar/ocultar el botón según el desplazamiento
+  window.onscroll = function() { mostrarBoton() };
+
+  function mostrarBoton() {
+    const boton = document.getElementById("btnSubir");
+    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+      boton.style.display = "block";
+    } else {
+      boton.style.display = "none";
+    }
+  }
+
+  // Al hacer clic, vuelve suavemente al inicio
+  document.getElementById("btnSubir").addEventListener("click", function() {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+</script>
 
 </body>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">

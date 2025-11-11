@@ -324,3 +324,27 @@ h1 {
   text-shadow: 0 0 10px rgba(0, 120, 215, 0.6);
 }
 
+/* Botón "Volver arriba" */
+#btnSubir {
+  position: fixed;         /* siempre visible en pantalla */
+  bottom: 20px;            /* distancia desde el borde inferior */
+  right: 20px;             /* distancia desde el borde derecho */
+  background-color: #0078d7;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 22px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+  display: none;           /* oculto al inicio */
+  z-index: 9999;
+}
+
+/* Efecto al pasar el ratón */
+#btnSubir:hover {
+  background-color: #005fa3;
+  transform: scale(1.1);
+}
