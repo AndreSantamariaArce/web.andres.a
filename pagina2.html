@@ -3,62 +3,49 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contador</title>
-  <link rel="stylesheet" href="estilos.css"> <!-- usa el mismo estilo -->
+  <title>Contador de Clics</title>
+  <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
-    <!-- Loader -->
-<div id="loader">
-  <div class="spinner"></div>
-</div>
   <h1>Contador de clics</h1>
-<p>Has hecho clic <span id="contador">0</span> veces.</p>
-<button id="botonContar">Haz clic aquí</button>
-<button id="resetear">Reiniciar</button>
-<!-- Script -->
-<script>
-  // --- Inicializar contador ---
-  let contador = 0;
-  // Obtener los elementos
-  const mostrar = document.getElementById("contador");
-  const boton = document.getElementById("botonContar");
-  const resetear = document.getElementById("resetear");
-  // --- Aumentar contador ---
-  boton.addEventListener("click", () => {
-    contador++;
-    mostrar.textContent = contador;
-  });
-  // --- Reiniciar contador ---
-  resetear.addEventListener("click", () => {
-    contador = 0;
-    mostrar.textContent = contador;
-  });
-</script>
-<!-- Botón "Volver arriba" -->
-<button id="btnSubir" title="Volver arriba">⬆</button>
-<script>
-  // Mostrar/ocultar el botón según el desplazamiento
-  window.onscroll = function() { mostrarBoton() };
-  function mostrarBoton() {
-    const boton = document.getElementById("btnSubir");
-    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-      boton.style.display = "block";
-    } else {
-      boton.style.display = "none";
+  <p>Has hecho clic <span id="contador">0</span> veces.</p>
+
+  <button id="botonContar">Haz clic</button>
+  <button id="resetear">Reiniciar</button>
+
+  <!-- Botón "Volver arriba" -->
+  <button id="btnSubir" title="Volver arriba">⬆</button>
+
+  <script>
+    // --- Contador de clics ---
+    let contador = 0;
+    const mostrar = document.getElementById("contador");
+    const boton = document.getElementById("botonContar");
+    const resetear = document.getElementById("resetear");
+
+    boton.addEventListener("click", () => {
+      contador++;
+      mostrar.textContent = contador;
+    });
+
+    resetear.addEventListener("click", () => {
+      contador = 0;
+      mostrar.textContent = contador;
+    });
+
+    // --- Botón "Volver arriba" ---
+    window.onscroll = function() { mostrarBoton() };
+    function mostrarBoton() {
+      const boton = document.getElementById("btnSubir");
+      if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        boton.style.display = "block";
+      } else {
+        boton.style.display = "none";
+      }
     }
-  }
-  // Al hacer clic, vuelve suavemente al inicio
-  document.getElementById("btnSubir").addEventListener("click", function() {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
-</script>
-
-<script>
-  window.addEventListener("load", () => {
-    document.getElementById("loader").style.display = "none";
-  });
-</script>
-
+    document.getElementById("btnSubir").addEventListener("click", function() {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  </script>
 </body>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </html>

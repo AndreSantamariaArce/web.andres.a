@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ruleta Animada</title>
+  <link rel="stylesheet" href="estilos.css">
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: linear-gradient(120deg, #0078d7, #00b4d8);
+      font-family: Arial, sans-serif;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    .ruleta {
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      border: 10px solid #fff;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      transition: transform 5s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+    }
+
+    /* Cada sector */
+    .ruleta div {
+      position: absolute;
+      width: 50%;
+      height: 50%;
+      background: #0078d7;
+      transform-origin: 100% 100%;
+      clip-path: polygon(0 0, 100% 0, 100% 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+    }
+
+    /* Colores alternos y posiciones */
+    .ruleta div:nth-child(1) { background: #ff4d4d; transform: rotate(0deg); }
+    .ruleta div:nth-child(2) { background: #ffa500; transform: rotate(60deg); }
+    .ruleta div:nth-child(3) { background: #f4d35e; transform: rotate(120deg); }
+    .ruleta div:nth-child(4) { background: #90ee90; transform: rotate(180deg); }
+    .ruleta div:nth-child(5) { background: #1e90ff; transform: rotate(240deg); }
+    .ruleta div:nth-child(6) { background: #9370db; transform: rotate(300deg); }
+
+    /* Flecha superior */
+    .flecha {
+      width: 0; 
+      height: 0; 
+      border-left: 15px solid transparent;
+      border-right: 15px solid transparent;
+      border-bottom: 30px solid #fff;
+      position: absolute;
+      top: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+
+    button {
+      margin-top: 40px;
+      background: #fff;
+      color: #0078d7;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #0078d7;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <h1>Ruleta de 6 opciones</h1>
+  <div class="flecha"></div>
+  <div class="ruleta" id="ruleta">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+    <div>6</div>
+  </div>
+  <button onclick="girar()">Girar</button>
+
+  <script>
+    let anguloActual = 0;
+
+    function girar() {
+      const ruleta = document.getElementById("ruleta");
+      const vueltas = 5; // número de vueltas completas
+      const seccion = 60; // 360° / 6 secciones
+      const aleatorio = Math.floor(Math.random() * 6); // número entre 0 y 5
+      const anguloFinal = (vueltas * 360) + (aleatorio * seccion) + (seccion / 2);
+
+      ruleta.style.transition = "transform 5s cubic-bezier(0.17, 0.67, 0.83, 0.67)";
+      ruleta.style.transform = `rotate(${anguloActual + anguloFinal}deg)`;
+
+      anguloActual += anguloFinal;
+
+      // Mostrar resultado al final
+      setTimeout(() => {
+        alert(`La ruleta cayó en la opción: ${aleatorio + 1}`);
+      }, 5000);
+    }
+  </script>
+</body>
+</html>
