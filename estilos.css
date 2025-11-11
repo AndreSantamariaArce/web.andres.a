@@ -285,3 +285,41 @@ h1 {
   opacity: 0;
   visibility: hidden;
 }
+
+
+.contenido h1,
+.contenido h2,
+.contenido p {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contenido h1:hover,
+.contenido h2:hover,
+.contenido p:hover {
+  transform: translateY(-5px); /* se eleva un poco */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+.contenido h1:hover,
+.contenido h2:hover {
+  transform: scale(1.05); /* aumenta 5% el tamaño */
+  transition: transform 0.3s ease;
+}
+.contenido h2 {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.contenido h2:hover {
+  transform: translateX(5px); /* se mueve un poco a la derecha */
+}
+.contenido h1,
+.contenido h2 {
+  transition: all 0.4s ease;
+}
+
+.contenido h1:hover,
+.contenido h2:hover {
+  transform: translateY(-5px);
+  color: #0078d7; /* cambia a azul */
+  text-shadow: 0 0 10px rgba(0, 120, 215, 0.6);
+}
