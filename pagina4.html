@@ -1,126 +1,213 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ruleta Animada</title>
-  <link rel="stylesheet" href="estilos.css">
-  <style>
-    body {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      background: linear-gradient(120deg, #0078d7, #00b4d8);
-      font-family: Arial, sans-serif;
-      color: #fff;
-      overflow: hidden;
-    }
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Ruleta de 6 secciones</title>
+<style>
+:root{
+--size: 360px;
+--pointer-size: 24px;
+--transition: 4s cubic-bezier(.12,.82,.32,1);
+}
 
-    h1 {
-      margin-bottom: 20px;
-    }
+body{font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;display:flex;min-height:100vh;align-items:center;justify-content:center;background:#0f172a;color:#e6eef8;padding:20px}
+.card{background:linear-gradient(180deg,#0b1220 0%, #071021 100%);padding:22px;border-radius:12px;box-shadow:0 8px 30px rgba(2,6,23,.6);display:flex;gap:20px;align-items:center}
 
-    .ruleta {
-      width: 300px;
-      height: 300px;
-      border-radius: 50%;
-      border: 10px solid #fff;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 0 20px rgba(0,0,0,0.3);
-      transition: transform 5s cubic-bezier(0.17, 0.67, 0.83, 0.67);
-    }
 
-    /* Cada sector */
-    .ruleta div {
-      position: absolute;
-      width: 50%;
-      height: 50%;
-      background: #0078d7;
-      transform-origin: 100% 100%;
-      clip-path: polygon(0 0, 100% 0, 100% 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-weight: bold;
-    }
+/* contenedor de la ruleta */
+.wheel-wrap{position:relative;width:var(--size);height:var(--size);display:grid;place-items:center}
 
-    /* Colores alternos y posiciones */
-    .ruleta div:nth-child(1) { background: #ff4d4d; transform: rotate(0deg); }
-    .ruleta div:nth-child(2) { background: #ffa500; transform: rotate(60deg); }
-    .ruleta div:nth-child(3) { background: #f4d35e; transform: rotate(120deg); }
-    .ruleta div:nth-child(4) { background: #90ee90; transform: rotate(180deg); }
-    .ruleta div:nth-child(5) { background: #1e90ff; transform: rotate(240deg); }
-    .ruleta div:nth-child(6) { background: #9370db; transform: rotate(300deg); }
 
-    /* Flecha superior */
-    .flecha {
-      width: 0; 
-      height: 0; 
-      border-left: 15px solid transparent;
-      border-right: 15px solid transparent;
-      border-bottom: 30px solid #fff;
-      position: absolute;
-      top: 50px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 10;
-    }
+/* la ruleta: usamos conic-gradient para los 6 sectores */
+.wheel{
+width:100%;height:100%;border-radius:50%;position:relative;overflow:hidden;transform:rotate(0deg);
+transition: transform var(--transition);
+background: conic-gradient(
+#ff6b6b 0deg 60deg,
+#ffb86b 60deg 120deg,
+#ffd36b 120deg 180deg,
+#7ce3b0 180deg 240deg,
+#6bc8ff 240deg 300deg,
+#b58bff 300deg 360deg
+);
+box-shadow: inset 0 -6px 18px rgba(0,0,0,.25), 0 10px 30px rgba(2,6,23, .5);
+}
 
-    button {
-      margin-top: 40px;
-      background: #fff;
-      color: #0078d7;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 5px;
-      font-size: 16px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
+/* números sobre la ruleta */
+.wheel .labels{
+position:absolute;inset:0;pointer-events:none;
+}
+.label{position:absolute;
+  position: absolute;
+  left: 40%;
+  top: 27%;
+  transform-origin: 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 50%;
+  font-weight: 800;
+  font-size: 120px;
+  color: #ffffff;
+  text-shadow: 0 0 6px rgba(0,0,0,0.7);
+}
 
-    button:hover {
-      background: #0078d7;
-      color: #fff;
-    }
-  </style>
+
+/* flecha/puntero */
+.pointer{position:absolute;top:-12px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:var(--pointer-size) solid transparent;border-right:var(--pointer-size) solid transparent;border-bottom:var(--pointer-size) solid #fffbfb;filter:drop-shadow(0 2px 4px rgba(0,0,0,.45));z-index:10}
+
+
+/* centro decorativo */
+.center{position:absolute;width:90px;height:90px;border-radius:50%;background:linear-gradient(180deg,#ffffff,#e9eef7);display:grid;place-items:center;font-weight:800;z-index:5}
+
+
+/* controles */
+.controls{display:flex;flex-direction:column;gap:10px;align-items:center}
+button{background:#0ea5a4;color:white;border:0;padding:12px 20px;border-radius:10px;font-weight:700;cursor:pointer}
+button:active{transform:translateY(1px)}
+
+
+.result{min-height:22px;font-weight:700;color:#dbeafe}
+
+@media (max-width:520px){:root{--size:280px} .center{width:72px;height:72px}}
+</style>
 </head>
 <body>
-  <h1>Ruleta de 6 opciones</h1>
-  <div class="flecha"></div>
-  <div class="ruleta" id="ruleta">
-    <div>1</div>
-    <div>2</div>
-    <div>3</div>
-    <div>4</div>
-    <div>5</div>
-    <div>6</div>
-  </div>
-  <button onclick="girar()">Girar</button>
+<div class="card">
+<div class="wheel-wrap">
+<div class="pointer" aria-hidden="true"></div>
+<div id="wheel" class="wheel" role="img" aria-label="Ruleta de 6 secciones">
+<div class="labels" aria-hidden="true">
+<!-- Generamos 6 etiquetas posicionadas con transform -->
+<!-- Las posiciones se calculan en JS al cargar -->
+</div>
+</div>
+<div class="center" id="center">Girar</div>
+</div>
 
-  <script>
-    let anguloActual = 0;
 
-    function girar() {
-      const ruleta = document.getElementById("ruleta");
-      const vueltas = 5; // número de vueltas completas
-      const seccion = 60; // 360° / 6 secciones
-      const aleatorio = Math.floor(Math.random() * 6); // número entre 0 y 5
-      const anguloFinal = (vueltas * 360) + (aleatorio * seccion) + (seccion / 2);
+<div class="controls">
+<button id="spinBtn">Girar</button>
+<div class="result" id="result">Presiona "Girar"</div>
+</div>
+</div>
 
-      ruleta.style.transition = "transform 5s cubic-bezier(0.17, 0.67, 0.83, 0.67)";
-      ruleta.style.transform = `rotate(${anguloActual + anguloFinal}deg)`;
 
-      anguloActual += anguloFinal;
+<script>
+// Configuración
+const sectors = [1,2,3,4,5,6]; // números mostrados
+const sectorAngle = 360 / sectors.length;
+const wheel = document.getElementById('wheel');
+const labelsContainer = wheel.querySelector('.labels');
+const spinBtn = document.getElementById('spinBtn');
+const resultEl = document.getElementById('result');
+const center = document.getElementById('center');
 
-      // Mostrar resultado al final
-      setTimeout(() => {
-        alert(`La ruleta cayó en la opción: ${aleatorio + 1}`);
-      }, 5000);
-    }
-  </script>
+
+// Crear y posicionar las etiquetas (números) sobre cada sector
+function createLabels(){
+labelsContainer.innerHTML = '';
+for(let i=0;i<sectors.length;i++){
+const label = document.createElement('div');
+label.className = 'label';
+// rotamos cada etiqueta para alinearla con el centro de su sector
+const angle = i * sectorAngle + sectorAngle/2; // centro del sector
+// colocamos la etiqueta a la mitad del radio y la rotamos para quedar legible
+label.style.transform = `rotate(${angle}deg) translate(0, -50%) rotate(${-angle}deg)`;
+label.textContent = sectors[i];
+labelsContainer.appendChild(label);
+}
+}
+
+
+createLabels();
+
+
+// Estado
+let spinning = false;
+let currentRotation = 0;
+
+
+function getRandomInt(min, max){ // incluyente
+return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function spinToIndex(index){
+if(spinning) return;
+spinning = true;
+spinBtn.disabled = true;
+resultEl.textContent = 'Girando...';
+
+
+// Queremos que el centro del sector "index" quede apuntando hacia arriba (puntero)
+// Ángulo necesario (en sentido horario positivo): 360 - (index*sectorAngle + sectorAngle/2)
+const targetAngle = 360 - (index * sectorAngle + sectorAngle/2);
+
+
+// Añadimos varias vueltas completas para el efecto
+const extraTurns = getRandomInt(3,6); // 3 a 6 vueltas completas
+const finalRotation = extraTurns * 360 + targetAngle;
+
+
+// Aplicamos la rotación acumulada
+currentRotation = currentRotation + finalRotation;
+// Forzamos la transición con estilo definido en CSS
+wheel.style.transition = '';
+// pequeña espera para asegurar que el navegador registre la transición previa
+requestAnimationFrame(()=>{
+requestAnimationFrame(()=>{
+wheel.style.transition = 'transform 4s cubic-bezier(.12,.82,.32,1)';
+wheel.style.transform = `rotate(${currentRotation}deg)`;
+});
+});
+
+// Cuando termine la transición, mostramos resultado
+const onEnd = (e) => {
+if(e.propertyName !== 'transform') return;
+wheel.removeEventListener('transitionend', onEnd);
+// calculamos el resultado real usando la rotación final normalizada
+const normalized = ((currentRotation % 360) + 360) % 360; // 0-360
+// Convertir la posición apuntada (arriba) a un índice: invertimos la fórmula usada antes
+// índice = floor( (360 - normalized - sectorAngle/2) / sectorAngle ) mod n
+let calc = Math.floor((360 - normalized - sectorAngle/2) / sectorAngle);
+// acomodar en rango
+calc = ((calc % sectors.length) + sectors.length) % sectors.length;
+
+
+const value = sectors[calc];
+resultEl.textContent = `Resultado: ${value}`;
+center.textContent = value;
+spinning = false;
+spinBtn.disabled = false;
+};
+
+
+wheel.addEventListener('transitionend', onEnd);
+}
+
+
+// Asignación para el botón: elegimos un índice aleatorio
+spinBtn.addEventListener('click', ()=>{
+// índice aleatorio 0..n-1
+const idx = getRandomInt(0, sectors.length - 1);
+spinToIndex(idx);
+});
+
+
+// Permite girar con la tecla espacio
+window.addEventListener('keydown', (e)=>{
+if(e.code === 'Space'){
+e.preventDefault();
+spinBtn.click();
+}
+});
+
+
+// Inicializa centro
+center.textContent = '-'
+
+
+</script>
 </body>
 </html>
